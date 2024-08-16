@@ -45,7 +45,6 @@ public class WhaleAnimator : MonoBehaviour
         tailTip.transform.rotation = Quaternion.Lerp(
             Quaternion.AngleAxis(tailSwingAngle, _armature.transform.forward), Quaternion.AngleAxis( -1 * tailSwingAngle, _armature.transform.forward),
             (Mathf.Cos(2*(_tailSwingTime / timeToTailSwing) * Mathf.PI) + 1)/2) * _armature.transform.rotation;
-        Debug.Log((Mathf.Cos(2 * (_tailSwingTime / timeToTailSwing) * Mathf.PI) + 1) / 2);
 
         //Debug.DrawLine(transform.position + _armature.transform.forward, transform.position, Color.red, 0.1f, false);
     }

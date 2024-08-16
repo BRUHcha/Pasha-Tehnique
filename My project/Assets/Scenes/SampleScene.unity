@@ -16859,6 +16859,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3711876444152714438, guid: 641ece7736a52354e815e48a43665366, type: 3}
+      propertyPath: tailTip
+      value: 
+      objectReference: {fileID: 524879019}
+    - target: {fileID: 3711876444152714438, guid: 641ece7736a52354e815e48a43665366, type: 3}
+      propertyPath: headPoint
+      value: 
+      objectReference: {fileID: 1342368465}
     - target: {fileID: 4235507854022015684, guid: 641ece7736a52354e815e48a43665366, type: 3}
       propertyPath: m_LocalScale.x
       value: 300
@@ -16949,7 +16957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777934569382482561, guid: 641ece7736a52354e815e48a43665366, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6777934569382482561, guid: 641ece7736a52354e815e48a43665366, type: 3}
       propertyPath: waypointPath
