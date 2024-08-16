@@ -1,12 +1,5 @@
-using JetBrains.Annotations;
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
-using PSXShaderKit;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class RayP : MonoBehaviour
 {
@@ -34,7 +27,7 @@ public class RayP : MonoBehaviour
                 _text.text = "Сука только попробуй нажать [E]";
                 if(Input.GetKeyDown(KeyCode.E))
                 {
-                    clickable.DoSomething();
+                    clickable.DoSomething(gameObject.transform.parent.gameObject);
                 }
             }
 

@@ -17,4 +17,10 @@ public class Sounds : MonoBehaviour
     {
         _audioSource.PlayOneShot(clips[num], volume);
     }
+
+    public void PlayAnyRandomSound(float volume = 0.5f)
+    {
+        int i = Random.Range(0, clips.Length);
+        _audioSource.PlayOneShot(clips[i], volume);
+    }
 }

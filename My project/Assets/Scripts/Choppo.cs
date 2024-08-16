@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Xml.Serialization;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Choppo : Sounds, IClickable
@@ -16,7 +11,7 @@ public class Choppo : Sounds, IClickable
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
     }
-    public void DoSomething()
+    public void DoSomething(GameObject sender)
     {
         if (!_audioSource.isPlaying)
         {

@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PickupSystem : MonoBehaviour, IClickable
 {
@@ -15,7 +11,7 @@ public class PickupSystem : MonoBehaviour, IClickable
     [SerializeField] private bool equipped;
     public static bool slotFull;
 
-    public void DoSomething()
+    public void DoSomething(GameObject sender)
     {
         if (!equipped && !slotFull) PickUp();
     }

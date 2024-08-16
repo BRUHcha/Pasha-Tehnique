@@ -4,6 +4,6 @@ using UnityEngine;
 
 interface IClickable
 {
-    void DoSomething();
+    void DoSomething(GameObject sender);
 }
 

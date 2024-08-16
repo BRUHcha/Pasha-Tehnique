@@ -15,7 +15,7 @@ public class TyriagaDoor : MonoBehaviour, IClickable
     {
         _playerMovement = _player.GetComponent<PlayerMovement>();
     }
-    public void DoSomething()
+    public void DoSomething(GameObject sender)
     {
         if (_resetAnim)
             _randomAnim.ResetAnim();

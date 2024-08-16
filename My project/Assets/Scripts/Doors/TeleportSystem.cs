@@ -16,7 +16,7 @@ public class TeleportSystem : MonoBehaviour, IClickable
     }
 
 
-    public void DoSomething()
+    public void DoSomething(GameObject sender)
     {
         StartCoroutine(Teleport());
     }
