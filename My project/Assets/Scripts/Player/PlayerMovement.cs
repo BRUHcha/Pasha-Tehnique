@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canMove = true;
 
-
+    public Camera PlayerCamera { get => playerCamera; }
 
     void Start()
 

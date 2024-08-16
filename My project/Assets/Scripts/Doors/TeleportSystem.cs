@@ -6,28 +6,21 @@ using UnityEngine.UIElements;
 public class TeleportSystem : MonoBehaviour, IClickable
 {
     [SerializeField] private Transform _anotherTelepot;
-    [SerializeField] private GameObject _player;
-
-    private PlayerMovement _playerMovement;
-
-    private void Start()
-    {
-        _playerMovement = _player.GetComponent<PlayerMovement>();
-    }
-
 
     public void DoSomething(GameObject sender)
     {
-        StartCoroutine(Teleport());
+        StartCoroutine(Teleport(sender));
     }
 
-    private IEnumerator Teleport()
+    private IEnumerator Teleport(GameObject player)
     {
-        _playerMovement.enabled = false;
+        var mv = player.GetComponent<PlayerMovement>();
+        mv.enabled = false;
         yield return new WaitForSeconds(0.05f);
-        _player.transform.position = _anotherTelepot.position;
-        _player.transform.rotation = _anotherTelepot.rotation;
+        player.transform.position = _anotherTelepot.position;
+        player.transform.rotation = _anotherTelepot.rotation;
         yield return new WaitForSeconds(0.05f);
-        _playerMovement.enabled = true;
+        mv.enabled = true;
+
     }
 }

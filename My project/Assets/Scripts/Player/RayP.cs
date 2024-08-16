@@ -24,7 +24,7 @@ public class RayP : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent<IClickable>(out IClickable clickable))
             {
-                _text.text = "Сука только попробуй нажать [E]";
+                _text.text = "Только попробуй нажать [E]";
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     clickable.DoSomething(gameObject.transform.parent.gameObject);

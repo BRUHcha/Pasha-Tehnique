@@ -11,7 +11,11 @@ public class Anvil : Sounds, IClickable
 
     public void DoSomething(GameObject sender)
     {
-        rb.AddForce(transform.position - sender.transform.position + Vector3.up * 200);
+        var cam = sender.GetComponent<PlayerMovement>().PlayerCamera; //had to do it
+        RaycastHit hit;
+        var playerRay = new Ray(cam.transform.position, cam.transform.forward);
+        Physics.Raycast(playerRay, out hit);
+        rb.AddForceAtPosition(200f * (transform.position - sender.transform.position) + Vector3.up * 300, hit.point);
     }
     private void OnCollisionEnter(Collision collision)
     {
