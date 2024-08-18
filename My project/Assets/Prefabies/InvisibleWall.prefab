@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 721686326286201431}
   - component: {fileID: 9128484967103484404}
   m_Layer: 0
-  m_Name: TyragaWall
+  m_Name: InvisibleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
