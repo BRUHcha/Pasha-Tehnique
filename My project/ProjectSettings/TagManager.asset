@@ -8,6 +8,7 @@ TagManager:
   - Carpet
   - Wood
   - HeavyObject
+  - Stone
   layers:
   - Default
   - TransparentFX
