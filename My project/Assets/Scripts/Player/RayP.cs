@@ -11,7 +11,9 @@ public class RayP : MonoBehaviour
 
     private void Start()
     {
-        _text = _textObj.GetComponent<Text>(); 
+        _text = _textObj.GetComponent<Text>();
+        gameObject.GetComponent<Camera>().depthTextureMode = DepthTextureMode.Depth;
+        Debug.Log(GetComponent<Camera>().depthTextureMode);
     }
 
     void Update()
