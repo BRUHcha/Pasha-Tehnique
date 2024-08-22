@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6ac9e070e518e409e8fb516cf6d299, type: 3}
+  m_Name: SpineGrass
+  m_EditorClassIdentifier: 
+  footstepSounds:
+  - {fileID: 8300000, guid: e7fc0f11827acc34c97526beb676e2f6, type: 3}
+  - {fileID: 8300000, guid: 796c4bd7c50ae654e833f95ef686e54c, type: 3}
+  - {fileID: 8300000, guid: 6e1c1daf869d558408d5de05f1befca3, type: 3}
+  - {fileID: 8300000, guid: 4177db4106fc22349b363ace903a81fa, type: 3}
+  - {fileID: 8300000, guid: c4a56706a575e0a4480a73c2c73c9591, type: 3}
