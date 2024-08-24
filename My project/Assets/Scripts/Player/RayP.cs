@@ -11,9 +11,9 @@ public class RayP : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         _text = _textObj.GetComponent<Text>();
         gameObject.GetComponent<Camera>().depthTextureMode = DepthTextureMode.Depth;
-        Debug.Log(GetComponent<Camera>().depthTextureMode);
     }
 
     void Update()

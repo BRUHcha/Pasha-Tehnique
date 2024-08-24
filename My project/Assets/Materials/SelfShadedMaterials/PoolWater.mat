@@ -91,6 +91,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _Density: 3
+    - _Depth: 0.4
     - _DepthColorModifier: 0.1
     - _DepthModifier: 0.2
     - _DetailNormalMapScale: 1
@@ -109,6 +110,7 @@ Material:
     - _SpecularHighlights: 1
     - _Speed: 0
     - _SrcBlend: 1
+    - _Thickness: 0.2
     - _Tiling: 100
     - _Transparancy: 0.249
     - _UVSec: 0
@@ -116,10 +118,12 @@ Material:
     - _WaveSpeed: 0.299
     - _WaveTiling: 40
     - _WavesScale: 2
+    - _Width: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.44775718, g: 0.735849, b: 0.7281323, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.14635357, g: 1.3489978, b: 1.3075274, a: 0}
+    - _Color: {r: 1024, g: 1024, b: 1024, a: 1}
     - _DepthColor: {r: 0.091580644, g: 0.12532635, b: 0.13207549, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ReactiveFoamColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

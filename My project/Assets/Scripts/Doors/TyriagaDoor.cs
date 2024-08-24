@@ -5,15 +5,13 @@ using UnityEngine;
 public class TyriagaDoor : MonoBehaviour, IClickable
 {
     [SerializeField] private Transform _anotherTelepot;
-    [SerializeField] private GameObject _player;
     [SerializeField] private RandomAnimation _randomAnim;
 
     [SerializeField] private bool _resetAnim;
 
-    private PlayerMovement _playerMovement;
     private void Start()
     {
-        _playerMovement = _player.GetComponent<PlayerMovement>();
+
     }
     public void DoSomething(GameObject sender)
     {
@@ -22,15 +20,15 @@ public class TyriagaDoor : MonoBehaviour, IClickable
         if (!_resetAnim)
             _randomAnim.RandomAnim();
 
-        StartCoroutine(Teleport());
+        StartCoroutine(Teleport(sender.GetComponent<PlayerMovement>()));
     }
-    private IEnumerator Teleport()
+    private IEnumerator Teleport(PlayerMovement playerMovement)
     {
-        _playerMovement.enabled = false;
+        playerMovement.enabled = false;
         yield return new WaitForSeconds(0.05f);
-        _player.transform.position = _anotherTelepot.position;
-        _player.transform.rotation = _anotherTelepot.rotation;
+        playerMovement.gameObject.transform.position = _anotherTelepot.position;
+        playerMovement.gameObject.transform.rotation = _anotherTelepot.rotation;
         yield return new WaitForSeconds(0.05f);
-        _playerMovement.enabled = true;
+        playerMovement.enabled = true;
     }
 }
