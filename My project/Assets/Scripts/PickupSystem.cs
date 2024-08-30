@@ -13,6 +13,9 @@ public class PickupSystem : MonoBehaviour, IClickable
 
     public void DoSomething(GameObject sender)
     {
+        player = sender.transform;
+        plCam = sender.transform.GetChild(1);
+        ItemContainer = sender.transform.GetChild(1).GetChild(0).transform;
         if (!equipped && !slotFull) PickUp();
     }
 
