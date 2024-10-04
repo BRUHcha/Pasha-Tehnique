@@ -1,45 +1,94 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System;
+using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Footsteps : Sounds
+public class Footsteps : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float rayLen;
     [SerializeField] private LayerMask ground;
+    [SerializeField] private float stepInterval = 0.7f;
+    [SerializeField] private List<AudioClip> _footstepSounds;
 
-    private AudioSource steps;
+    private AudioSource _footstepsAudioSource;
     private Ray GroundDetector;
     private string previousTag = null;
+    private TerrainChecker _checker;
+    private string _currentlayer;
+    private float _stepCounter;
+
+    public FootStepCollection[] FootstepCollections;
 
     private void Start()
     {
-        steps = GetComponent<AudioSource>();
+        _footstepsAudioSource = GetComponent<AudioSource>();
+        _checker = new TerrainChecker();
     }
     private void Update()
     {
-        GroundDetector = new Ray(transform.position, transform.forward * rayLen);
+        _stepCounter += Time.deltaTime;
 
+        GroundDetector = new Ray(transform.position, transform.forward * rayLen);
         if (Physics.Raycast(GroundDetector, out RaycastHit hit, rayLen, ground))
         {
-            if (hit.collider.CompareTag("Carpet")) steps.clip = clips[0];
-            if (hit.collider.CompareTag("Wood")) steps.clip = clips[1];
-            if (hit.collider.CompareTag("Stone")) steps.clip = clips[2];
+            if (hit.transform.GetComponent<Terrain>() != null)
+            {
+                Terrain t = hit.transform.GetComponent<Terrain>();
+                if(_currentlayer != _checker.GetLayerName(transform.position, t))
+                {
+                    _currentlayer = _checker.GetLayerName(transform.position, t);
+                    SwapFootstepSounds();
+                }
+            }
             else
-                Debug.Log(hit.collider.gameObject.name);
+            {
+                if(!hit.transform.CompareTag(_currentlayer))
+                {
+                    _currentlayer = hit.transform.tag;
+                    SwapFootstepSounds();
+                }
+            }
         }
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && characterController.isGrounded)
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
-            if(!hit.collider.CompareTag(previousTag))
-                steps.enabled = false;
+            if (_stepCounter >= stepInterval)
+            {
+                PlayFootstepSound();
+                _stepCounter = 0;
+            }
+        }
 
-            steps.enabled = true;
-        }
-        else
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (!characterController.isGrounded) return;
+
+        int n = UnityEngine.Random.Range(1, _footstepSounds.Count());
+        _footstepsAudioSource.clip = _footstepSounds[n];
+        _footstepsAudioSource.PlayOneShot(_footstepsAudioSource.clip);
+
+        _footstepSounds[n] = _footstepSounds[0];
+        _footstepSounds[0] = _footstepsAudioSource.clip;
+    }
+
+    private void SwapFootstepSounds()
+    {
+        foreach (FootStepCollection collection in FootstepCollections)
         {
-            steps.enabled = false;
+            if (_currentlayer != collection.name) 
+                continue;
+            
+            _footstepSounds.Clear();
+
+            for (int i = 0; i < collection.footstepSounds.Count; i++)
+            {
+                _footstepSounds.Add(collection.footstepSounds[i]);
+            }
         }
-        previousTag = hit.collider.tag;
     }
 }
