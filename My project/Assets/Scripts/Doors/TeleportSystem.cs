@@ -5,22 +5,19 @@ using UnityEngine.UIElements;
 
 public class TeleportSystem : MonoBehaviour, IClickable
 {
+    [Header("InteractionMessage")]
+    [SerializeField] private string InteractMessage;
+    public string InteractionMessage => InteractMessage;
+
+    [Header("Other shit")]
     [SerializeField] private Transform _anotherTelepot;
+
+    private Transform player;
 
     public void DoSomething(GameObject sender)
     {
-        StartCoroutine(Teleport(sender));
-    }
-
-    private IEnumerator Teleport(GameObject player)
-    {
-        var mv = player.GetComponent<PlayerMovement>();
-        mv.enabled = false;
-        yield return new WaitForSeconds(0.05f);
-        player.transform.position = _anotherTelepot.position;
-        player.transform.rotation = _anotherTelepot.rotation;
-        yield return new WaitForSeconds(0.05f);
-        mv.enabled = true;
-
+        player = sender.transform.parent;
+        player.position = _anotherTelepot.position;
+        player.rotation = _anotherTelepot.rotation;
     }
 }

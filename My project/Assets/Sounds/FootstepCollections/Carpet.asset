@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6ac9e070e518e409e8fb516cf6d299, type: 3}
+  m_Name: Carpet
+  m_EditorClassIdentifier: 
+  footstepSounds:
+  - {fileID: 8300000, guid: 4d5b5f2bf697fb3478af188bb1febb02, type: 3}
+  - {fileID: 8300000, guid: 243e557bbe0f6e64e893653c147caa5b, type: 3}
+  - {fileID: 8300000, guid: fec4543f461850d499d98a62261e6b61, type: 3}
+  - {fileID: 8300000, guid: ccaa762b1e95dea46bd7cfa4d75afaf8, type: 3}
+  - {fileID: 8300000, guid: 8080aeda92958574684640f026d9a2a6, type: 3}

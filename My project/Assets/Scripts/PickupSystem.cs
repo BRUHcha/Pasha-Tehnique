@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class PickupSystem : MonoBehaviour, IClickable
 {
-    [SerializeField] private Animator anim;
-    [SerializeField] private SmokeSystem script;
+    [Header("InteractionMessage")]
+    [SerializeField] private string InteractMessage;
+    public string InteractionMessage => InteractMessage;
+
+    [Header("Other shit")]
+    [SerializeField] private MonoBehaviour itemScript;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private BoxCollider coll;
     [SerializeField] private Transform ItemContainer, player, plCam;
@@ -13,9 +17,9 @@ public class PickupSystem : MonoBehaviour, IClickable
 
     public void DoSomething(GameObject sender)
     {
-        player = sender.transform;
-        plCam = sender.transform.GetChild(1);
-        ItemContainer = sender.transform.GetChild(1).GetChild(0).transform;
+        player = sender.transform.parent;
+        plCam = sender.transform.GetChild(0);
+        ItemContainer = sender.transform.GetChild(0).GetChild(0).transform;
         if (!equipped && !slotFull) PickUp();
     }
 
@@ -29,15 +33,13 @@ public class PickupSystem : MonoBehaviour, IClickable
         {
             rb.isKinematic = false;
             coll.isTrigger = false;
-            script.enabled = false;
-            anim.enabled = false;
+            itemScript.enabled = false;
         }
         if (equipped)
         {
             rb.isKinematic = true;
             coll.isTrigger = true;
-            script.enabled = true;
-            anim.enabled = true;
+            itemScript.enabled = true;
         }
     }
 
@@ -54,8 +56,7 @@ public class PickupSystem : MonoBehaviour, IClickable
         transform.localRotation = Quaternion.Euler(Vector3.zero);
         transform.localScale = Vector3.one;
 
-        script.enabled = true;
-        anim.enabled = true;
+        itemScript.enabled = true;
     }
     private void Drop()
     {
@@ -67,16 +68,15 @@ public class PickupSystem : MonoBehaviour, IClickable
         rb.isKinematic = false;
         coll.isTrigger = false;
 
-        script.enabled = false;
-        anim.enabled = false;
+        itemScript.enabled = false;
 
-        //rb.velocity = player.GetComponent<Rigidbody>().velocity;
+        rb.velocity = player.GetComponent<Rigidbody>().velocity;
 
-        //rb.AddForce(plCam.forward * dropForwardForce, ForceMode.Impulse);
-        //rb.AddForce(plCam.up * dropUpwardForce, ForceMode.Impulse);
+        rb.AddForce(plCam.forward * dropForwardForce, ForceMode.Impulse);
+        rb.AddForce(plCam.up * dropUpwardForce, ForceMode.Impulse);
 
-        // float rand = Random.Range(-2f, 2f);
-        //rb.AddTorque(new Vector3(rand, rand, rand));
+        float rand = Random.Range(-2f, 2f);
+        rb.AddTorque(new Vector3(rand, rand, rand));
 
     }
 }

@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class TyriagaDoor : MonoBehaviour, IClickable
 {
+    [Header("InteractionMessage")]
+    [SerializeField] private string InteractMessage;
+    public string InteractionMessage => InteractMessage;
+
+    [Header("Other shit")]
     [SerializeField] private Transform _anotherTelepot;
     [SerializeField] private RandomAnimation _randomAnim;
 
     [SerializeField] private bool _resetAnim;
+
+    private Transform player;
 
     private void Start()
     {
@@ -20,15 +27,9 @@ public class TyriagaDoor : MonoBehaviour, IClickable
         if (!_resetAnim)
             _randomAnim.RandomAnim();
 
-        StartCoroutine(Teleport(sender.GetComponent<PlayerMovement>()));
-    }
-    private IEnumerator Teleport(PlayerMovement playerMovement)
-    {
-        playerMovement.enabled = false;
-        yield return new WaitForSeconds(0.05f);
-        playerMovement.gameObject.transform.position = _anotherTelepot.position;
-        playerMovement.gameObject.transform.rotation = _anotherTelepot.rotation;
-        yield return new WaitForSeconds(0.05f);
-        playerMovement.enabled = true;
+        player = sender.transform.parent;
+
+        player.transform.position = _anotherTelepot.position;
+        player.transform.rotation = _anotherTelepot.rotation;
     }
 }

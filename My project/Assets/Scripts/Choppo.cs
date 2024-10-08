@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Choppo : Sounds, IClickable
 {
+    [Header("InteractionMessage")]
+    [SerializeField] private string InteractMessage;
+    public string InteractionMessage => InteractMessage;
+
+    [Header("Other shit")]
     [SerializeField] private float straight;
 
     private Rigidbody rb;

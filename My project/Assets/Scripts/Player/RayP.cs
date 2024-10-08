@@ -26,15 +26,22 @@ public class RayP : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent<IClickable>(out IClickable clickable))
             {
-                _text.text = "Только попробуй нажать [E]";
+                _text.text = clickable.InteractionMessage;
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     clickable.DoSomething(gameObject.transform.parent.gameObject);
                 }
             }
-
             else
                 _text.text = "";
+
+            if (hit.collider.gameObject.TryGetComponent<IScrollable>(out IScrollable scrollable))
+            {
+                //scroll power 0.1
+                float scroll = Input.GetAxis("Mouse ScrollWheel");
+                if (scroll != 0f)
+                    scrollable.ScrollWheel(scroll);
+            }
         }
         else
             _text.text = "";

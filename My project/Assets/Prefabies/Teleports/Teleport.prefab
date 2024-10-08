@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd9b3fa7759f074d9e8fd858b7bbc36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractMessage: "\u0412\u043E\u0439\u0442\u0438 \u0432 \u0434\u0432\u0435\u0440\u044C
+    (E)"
   _anotherTelepot: {fileID: 0}
 --- !u!1 &7971851453817935780
 GameObject:

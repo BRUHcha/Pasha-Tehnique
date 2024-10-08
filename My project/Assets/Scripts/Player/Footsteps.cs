@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Footsteps : MonoBehaviour
 {
-    [SerializeField] private CharacterController characterController;
+    [SerializeField] private FirstPersonController playerController;
     [SerializeField] private float rayLen;
     [SerializeField] private LayerMask ground;
     [SerializeField] private float stepInterval = 0.7f;
@@ -16,7 +16,6 @@ public class Footsteps : MonoBehaviour
 
     private AudioSource _footstepsAudioSource;
     private Ray GroundDetector;
-    private string previousTag = null;
     private TerrainChecker _checker;
     private string _currentlayer;
     private float _stepCounter;
@@ -31,7 +30,6 @@ public class Footsteps : MonoBehaviour
     private void Update()
     {
         _stepCounter += Time.deltaTime;
-
         GroundDetector = new Ray(transform.position, transform.forward * rayLen);
         if (Physics.Raycast(GroundDetector, out RaycastHit hit, rayLen, ground))
         {
@@ -66,7 +64,7 @@ public class Footsteps : MonoBehaviour
 
     private void PlayFootstepSound()
     {
-        if (!characterController.isGrounded) return;
+        if (!playerController.isGrounded) return;
 
         int n = UnityEngine.Random.Range(1, _footstepSounds.Count());
         _footstepsAudioSource.clip = _footstepSounds[n];

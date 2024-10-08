@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Anvil : Sounds, IClickable
 {
+    [Header("InteractionMessage")]
+    [SerializeField] private string InteractMessage;
+    public string InteractionMessage => InteractMessage;
+
+    [Header("Other shit")]
     private Rigidbody rb;
 
     private void Start()
@@ -11,7 +16,7 @@ public class Anvil : Sounds, IClickable
 
     public void DoSomething(GameObject sender)
     {
-        var cam = sender.GetComponent<PlayerMovement>().PlayerCamera; //had to do it
+        var cam = sender.GetComponentInParent<FirstPersonController>().playerCamera; //had to do it
         RaycastHit hit;
         var playerRay = new Ray(cam.transform.position, cam.transform.forward);
         Physics.Raycast(playerRay, out hit);
