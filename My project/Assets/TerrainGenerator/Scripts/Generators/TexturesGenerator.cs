@@ -24,7 +24,9 @@ namespace Assets.Scripts.MapGenerator.Generators
                 splatPrototypes[i] = new SplatPrototype() { texture = (Texture2D)textures[i].Texture, tileSize = textures[i].Tilesize };
             }
 
+#pragma warning disable CS0618 // Тип или член устарел
             terrainData.splatPrototypes = splatPrototypes;
+#pragma warning restore CS0618 // Тип или член устарел
 
             if (terrainData.alphamapResolution != terrainData.size.x)
             {

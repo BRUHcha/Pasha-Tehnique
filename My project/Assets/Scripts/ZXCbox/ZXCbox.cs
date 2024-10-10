@@ -6,7 +6,7 @@ using UnityEngine.ProBuilder.MeshOperations;
 public class ZXCbox : MonoBehaviour
 {
     [SerializeField] private AudioClip[] clips;
-    [SerializeField] private new AudioSource audio;
+    [SerializeField] public new AudioSource audio;
 
     private int currentClip = 0;
     private new Light light;

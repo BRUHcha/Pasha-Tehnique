@@ -1,20 +1,6 @@
-﻿// CHANGE LOG
-// 
-// CHANGES || version VERSION
-//
-// "Enable/Disable Headbob, Changed look rotations - should result in reduced camera jitters" || version 1.0.1
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Unity.VisualScripting;
+﻿using UnityEngine;
 
 
-#if UNITY_EDITOR
-using UnityEditor;
-    using System.Net;
-#endif
 [SelectionBase]
 public class FirstPersonController : MonoBehaviour
 {
@@ -36,7 +22,6 @@ public class FirstPersonController : MonoBehaviour
     // Internal Variables
     private float yaw = 0.0f;
     private float pitch = 0.0f;
-    private Image crosshairObject;
 
     #endregion
 
@@ -90,8 +75,6 @@ public class FirstPersonController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        crosshairObject = GetComponentInChildren<Image>();
 
         if(lockCursor)
             Cursor.lockState = CursorLockMode.Locked;
